@@ -32,6 +32,7 @@ countryCapital = {
 }
 
 # Barvy
+white = "\u001b[0m"
 green = "\033[0;32m"
 red = "\033[0;31m"
 yellow = "\033[0;33m"
@@ -40,7 +41,6 @@ brgt_green = "\033[0;92m"
 brgt_yellow = "\033[0;93m"
 brgt_magenta = "\033[0;95m"
 brgt_cyan = "\033[0;96m"
-white = "\u001b[0m"
 
 # Texty
 yesOrNoStr = f"{white}({brgt_green}y{white}/{red}n{white})"
