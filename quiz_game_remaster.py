@@ -91,6 +91,6 @@ def game_main():
 
 
 # Začátek hry
-print(f"{brgt_magenta}Welcome to the quiz game!")
+print(f"{brgt_magenta}Welcome to the EU country capital quiz game!")
 name = input(f"{white}Enter your name: ")
 playTheGame()
