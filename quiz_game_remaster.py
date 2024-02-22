@@ -47,27 +47,7 @@ yesOrNoStr = f"{white}({brgt_green}y{white}/{red}n{white})"
 goodbyeStr = f"{white}Goodbye!"
 
 
-# Hrát/Hrát znovu?
-def playTheGame():
-    play = input(f"{white}{name}, do you want to play? {yesOrNoStr}: ")
-    if play.lower() == "n":
-        print(goodbyeStr)
-        quit()
-
-    print(f"{white}Before we start, please pick a game mode ")
-    print(f"{white}Classic mode (C)")
-    print(f"{white}Endless mode (E)")
-    while True:
-        endless = input(f"{white}Mode (C/E): ")
-        if endless.lower() == "e":
-            game_main(True)
-            break
-        elif endless.lower() == "c":
-            game_main(False)
-            break
-
-
-# Hlavní část
+# Gameplay
 def game_main(endlessMode: bool):
     print(f"{brgt_magenta}Let's start!")
     remainingCapitals = countryCapital.copy()
@@ -104,6 +84,26 @@ def game_main(endlessMode: bool):
     # Konec hry
     print(f"{white}Your score is {brgt_magenta}{score}")
     playTheGame()
+
+
+# Hrát?
+def playTheGame():
+    play = input(f"{white}{name}, do you want to play? {yesOrNoStr}: ")
+    if play.lower() == "n":
+        print(goodbyeStr)
+        quit()
+
+    print(f"{white}Before we start, please pick a game mode ")
+    print(f"{white}Classic mode (C)")
+    print(f"{white}Endless mode (E)")
+    while True:
+        endless = input(f"{white}Mode (C/E): ")
+        if endless.lower() == "e":
+            game_main(True)
+            break
+        elif endless.lower() == "c":
+            game_main(False)
+            break
 
 
 # Začátek hry
