@@ -53,20 +53,36 @@ def playTheGame():
     if play.lower() == "n":
         print(goodbyeStr)
         quit()
-    else:
-        game_main()
+
+    print(f"{white}Before we start, please pick a game mode ")
+    print(f"{white}Classic mode (C)")
+    print(f"{white}Endless mode (E)")
+    while True:
+        endless = input(f"{white}Mode (C/E): ")
+        if endless.lower() == "e":
+            game_main(True)
+            break
+        elif endless.lower() == "c":
+            game_main(False)
+            break
 
 
 # Hlavní část
-def game_main():
+def game_main(endlessMode: bool):
     print(f"{brgt_magenta}Let's start!")
     remainingCapitals = countryCapital.copy()
     score = 0
-    for _ in range(len(countryCapital)):
+
+    gameLenght = range(len(countryCapital))
+    if endlessMode:
+        gameLenght = range(1000000000)
+
+    for _ in gameLenght:
         countryCapitalPair = random.choice(list(remainingCapitals.items()))
         country = countryCapitalPair[0]
         capital = countryCapitalPair[-1]
-        del remainingCapitals[country]
+        if not endlessMode:
+            del remainingCapitals[country]
 
         answer = input(
             f"{white}What is the capital of {brgt_cyan}{country}{white}? "
@@ -82,7 +98,7 @@ def game_main():
         score += 1
         print(f"{white}Correct!")
 
-    if score == len(countryCapital):
+    if score == len(countryCapital) and not endlessMode:
         print(f"{brgt_yellow}You won!")
 
     # Konec hry
