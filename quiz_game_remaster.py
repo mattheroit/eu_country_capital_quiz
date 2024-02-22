@@ -45,20 +45,20 @@ rst = "\u001b[0m"
 
 # Hlavní část
 def game_main():
-    print(brgt_magenta + "Let's start!")
+    print(f"{brgt_magenta}Let's start!")
     score = 0
     drawn = set()
     while True:
         item = random.choice(list(countryCapital.items()))
         if score == len(countryCapital):
-            print(brgt_yellow + "You won!")
+            print(f"{brgt_yellow}You won!")
             break
         elif item in drawn:
             continue
         else:
             drawn.add(item)
             capital = input(
-                rst + f"What is the capital of " + brgt_cyan + f"{item[0]}" + rst + "? "
+                f"{rst}What is the capital of {brgt_cyan}{item[0]}{rst}? "
             ).capitalize()
 
         if capital == item[-1]:
@@ -70,40 +70,21 @@ def game_main():
             break
 
     # Konec hry
-    print(rst + f"Your score is " + brgt_magenta + f"{score}")
+    print(f"{rst}Your score is {brgt_magenta}{score}")
     play_again = input(
-        rst
-        + f"{name}, do you want to play again? ("
-        + brgt_green
-        + "y"
-        + rst
-        + "/"
-        + red
-        + "n"
-        + rst
-        + "): "
+        f"{rst}{name}, do you want to play again? ({brgt_green}y{rst}/{red}n{rst}): "
     )
     if play_again.lower() == "y":
         game_main()
     else:
-        print(rst + "Goodbye!")
+        print(f"{rst}Goodbye!")
         quit()
 
 
 # Začátek hry
-print(brgt_magenta + "Welcome to the quiz game!")
-name = input(rst + "Enter your name: ").capitalize()
-game = input(
-    f"{name}, do you want to play? ("
-    + brgt_green
-    + "y"
-    + rst
-    + "/"
-    + red
-    + "n"
-    + rst
-    + "): "
-)
+print(f"{brgt_magenta}Welcome to the quiz game!")
+name = input(f"{rst}Enter your name: ").capitalize()
+game = input(f"{name}, do you want to play? ({brgt_green}y{rst}/{red}n{rst}): ")
 if game.lower() == "n":
     print("Goodbye!")
     quit()
