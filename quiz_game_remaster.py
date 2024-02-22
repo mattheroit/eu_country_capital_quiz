@@ -50,30 +50,30 @@ goodbyeStr = f"{white}Goodbye!"
 # Hlavní část
 def game_main():
     print(f"{brgt_magenta}Let's start!")
+    remainingCapitals = countryCapital.copy()
     score = 0
-    drawn = set()
-    while True:
-        item = random.choice(list(countryCapital.items()))
-        if score == len(countryCapital):
-            print(f"{brgt_yellow}You won!")
-            break
-        elif item in drawn:
-            continue
-        else:
-            drawn.add(item)
-            capital = input(
-                f"{white}What is the capital of {brgt_cyan}{item[0]}{white}? "
-            ).capitalize()
+    for _ in range(len(countryCapital)):
+        countryCapitalPair = random.choice(list(remainingCapitals.items()))
+        country = countryCapitalPair[0]
+        capital = countryCapitalPair[-1]
+        del remainingCapitals[country]
 
-        if capital == item[-1]:
+        answer = input(
+            f"{white}What is the capital of {brgt_cyan}{country}{white}? "
+        ).capitalize()
+
+        if answer == capital:
             score += 1
             print(f"{white}Correct!")
         else:
             print(f"{white}Wrong!")
             print(
-                f"{white}The capital of {brgt_yellow}{item[0]} {white}is {brgt_cyan}{item[-1]}"
+                f"{white}The capital of {brgt_yellow}{country} {white}is {brgt_cyan}{capital}"
             )
             break
+
+    if score == len(countryCapital):
+        print(f"{brgt_yellow}You won!")
 
     # Konec hry
     print(f"{white}Your score is {brgt_magenta}{score}")
