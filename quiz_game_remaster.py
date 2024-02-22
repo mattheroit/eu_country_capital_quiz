@@ -40,7 +40,7 @@ brgt_green = "\033[0;92m"
 brgt_yellow = "\033[0;93m"
 brgt_magenta = "\033[0;95m"
 brgt_cyan = "\033[0;96m"
-rst = "\u001b[0m"
+white = "\u001b[0m"
 
 
 # Hlavní část
@@ -58,7 +58,7 @@ def game_main():
         else:
             drawn.add(item)
             capital = input(
-                f"{rst}What is the capital of {brgt_cyan}{item[0]}{rst}? "
+                f"{white}What is the capital of {brgt_cyan}{item[0]}{white}? "
             ).capitalize()
 
         if capital == item[-1]:
@@ -70,21 +70,21 @@ def game_main():
             break
 
     # Konec hry
-    print(f"{rst}Your score is {brgt_magenta}{score}")
+    print(f"{white}Your score is {brgt_magenta}{score}")
     play_again = input(
-        f"{rst}{name}, do you want to play again? ({brgt_green}y{rst}/{red}n{rst}): "
+        f"{white}{name}, do you want to play again? ({brgt_green}y{white}/{red}n{white}): "
     )
     if play_again.lower() == "y":
         game_main()
     else:
-        print(f"{rst}Goodbye!")
+        print(f"{white}Goodbye!")
         quit()
 
 
 # Začátek hry
 print(f"{brgt_magenta}Welcome to the quiz game!")
-name = input(f"{rst}Enter your name: ").capitalize()
-game = input(f"{name}, do you want to play? ({brgt_green}y{rst}/{red}n{rst}): ")
+name = input(f"{white}Enter your name: ").capitalize()
+game = input(f"{name}, do you want to play? ({brgt_green}y{white}/{red}n{white}): ")
 if game.lower() == "n":
     print("Goodbye!")
     quit()
