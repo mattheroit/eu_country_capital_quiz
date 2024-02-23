@@ -1,4 +1,4 @@
-import random
+import random, os, time
 
 # Slovník země/město
 countryCapital = {
@@ -47,8 +47,14 @@ yesOrNoStr = f"{white}({brgt_green}y{white}/{red}n{white})"
 goodbyeStr = f"{white}Goodbye!"
 
 
+# Vyprázdnit konzoli
+def cls():
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 # Gameplay
 def game_main(endlessMode: bool):
+    cls()
     print(f"{brgt_magenta}Let's start!")
     remainingCapitals = countryCapital.copy()
     score = 0
@@ -105,6 +111,7 @@ def playTheGame():
     play = input(f"{white}{name}, do you want to play? {yesOrNoStr}: ")
     if play.lower() == "n":
         print(goodbyeStr)
+        time.sleep(3)
         quit()
     pickGameMode()
 
