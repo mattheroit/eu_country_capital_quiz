@@ -86,13 +86,7 @@ def game_main(endlessMode: bool):
     playTheGame()
 
 
-# Hrát?
-def playTheGame():
-    play = input(f"{white}{name}, do you want to play? {yesOrNoStr}: ")
-    if play.lower() == "n":
-        print(goodbyeStr)
-        quit()
-
+def pickGameMode():
     print(f"{white}Before we start, please pick a game mode ")
     print(f"{white}Classic mode (C)")
     print(f"{white}Endless mode (E)")
@@ -104,6 +98,15 @@ def playTheGame():
         elif endless.lower() == "c":
             game_main(False)
             break
+
+
+# Hrát?
+def playTheGame():
+    play = input(f"{white}{name}, do you want to play? {yesOrNoStr}: ")
+    if play.lower() == "n":
+        print(goodbyeStr)
+        quit()
+    pickGameMode()
 
 
 # Začátek hry
